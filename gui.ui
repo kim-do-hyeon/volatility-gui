@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>758</width>
-    <height>335</height>
+    <height>331</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
      <string>Scan</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="cancel">
+   <widget class="QPushButton" name="exit">
     <property name="geometry">
      <rect>
       <x>670</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Cancel</string>
+     <string>Exit</string>
     </property>
    </widget>
    <widget class="QLabel" name="Command">
@@ -60,51 +60,38 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
-      <width>111</width>
-      <height>111</height>
+      <y>170</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="title">
      <string/>
     </property>
-    <widget class="QRadioButton" name="imageinfo_btn">
+    <widget class="QPushButton" name="init_scan">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Init Scan</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>90</width>
-       <height>16</height>
+       <width>91</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>Imageinfo</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="cmdscan_btn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>90</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>cmdscan</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="pstree_btn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>90</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>pstrss</string>
+      <string>IMAGE SCAN</string>
      </property>
     </widget>
    </widget>
@@ -152,6 +139,55 @@
       <width>741</width>
       <height>111</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="work">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>741</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="cmdscan_btn">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>230</y>
+      <width>90</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>cmdscan</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="pstree_btn">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>230</y>
+      <width>90</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>pstrss</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="imageinfo_btn">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>230</y>
+      <width>90</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>imageinfo</string>
     </property>
    </widget>
   </widget>
