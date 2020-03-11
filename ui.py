@@ -13,8 +13,8 @@ log = open('vol_log.txt','w',-1,"utf-8")
 #Time Stamp
 now = datetime.now()
 time = "{}/{}/{} {}:{}:{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
-print("Init TIME : " + time)
 print("Init TIME : " + time, file = log)
+print("Init TIME : " + time)
 
 # print("Init TIME : " + time , file=log)
 ui = uic.loadUiType("gui.ui")[0]
@@ -31,29 +31,41 @@ class MyWindow(QMainWindow, ui):
 
         #Scan, Cancel Button Call
         self.scan.clicked.connect(self.scan_btn) #Scan
-        self.cancel.clicked.connect(app.quit) #Exit
+        self.exit.clicked.connect(self.Exit) #Exit
         
         #Plugin Call
         self.imageinfo_btn.clicked.connect(self.imageinfo)
         self.cmdscan_btn.clicked.connect(self.cmdscan)
         self.pstree_btn.clicked.connect(self.PluginButtonClicked)
+
+        #ProgressBar Call
+        self.progressBar.valueChanged.connect(self.progress)
     
     #Call File Function
     def callfile(self):
         fname = QFileDialog.getOpenFileName(self)
         self.file_path.setText(fname[0])
         path = pathlib.Path(fname[0])
-        print(time + " > [CALLFILE] Selected Image Path" + path, file = log)
-        print(time + " > [CALLFILE] Selected Image Path" + path)
+        print(time + " > [CALLFILE] Selected Image Path " + str(path), file = log)
+        print(time + " > [CALLFILE] Selected Image Path " + str(path))
         return path
 
     #Scan Button - Message
     def scan_btn(self):
         path = self.file_path.toPlainText()
         path = pathlib.Path(path)
-        print (path)
-        subprocess.run(['python','volatility3/vol.py','-f', path,'windows.info'], shell=True, check=True)
+        print(time + " > [SCAN] Image Scan Path " + str(path), file = log)
+        print(time + " > [SCAN] Image Scan Path " + str(path))
+        self.Command.setText("Scanning!")
+        print(time + " > [SCAN] Scanning!", file = log)
+        print(time + " > [SCAN] Scanning!")
+        subprocess.run(['volatility_2.6_win64_standalone.exe','-f', str(path),'imageinfo', '> ./imageinfo/imageinfo.txt'], shell=True, check=True)
+        self.Command.setText("Scanned!")
+        print(time + " > [SCAN] Scanned!", file = log)
+        print(time + " > [SCAN] Scanned!")
 
+    def progress(self):
+            self.progressBar.setValue(100)
 
     #Plugin Call - Message // Soon Delete
     def PluginButtonClicked(self):
@@ -88,6 +100,11 @@ class MyWindow(QMainWindow, ui):
         cmdscan_result_file.close()
         self.statusbar.showMessage("Selected Cmdscan!")
 
+    #Exit
+    def Exit(self):
+        print(time + " > [EXIT] Exit! Bye", file = log)
+        print(time + " > [EXIT] Exit! Bye")
+        self.exit.clicked.connect(app.quit)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
