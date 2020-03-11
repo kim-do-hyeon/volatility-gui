@@ -11,10 +11,10 @@ from PyQt5.QtWidgets import *
 log = open('vol_log.txt','w',-1,"utf-8")
 
 #Time Stamp
-now = datetime.now()
-time = "{}{}{}{}{}{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
-print("Init TIME : " + time, file = log)
-print("Init TIME : " + time)
+def timestamp(self):
+    now = datetime.now()
+    time = "{}{}{}{}{}{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+    return time
 
 ui = uic.loadUiType("gui.ui")[0]
 
@@ -46,8 +46,8 @@ class MyWindow(QMainWindow, ui):
         fname = QFileDialog.getOpenFileName(self)
         self.file_path.setText(fname[0])
         path = pathlib.Path(fname[0])
-        print(" > [CALL FILE] Selected Image Path " + str(path), file = log)
-        print(" > [CALL FILE] Selected Image Path " + str(path))
+        print(timestamp(self) + " > [CALL FILE] Selected Image Path " + str(path), file = log)
+        print(timestamp(self) + " > [CALL FILE] Selected Image Path " + str(path))
         return path
 
     #Init_Scan Button - Message
@@ -56,18 +56,18 @@ class MyWindow(QMainWindow, ui):
         path = self.file_path.toPlainText()
         path = pathlib.Path(path)
 
-        print(" > [INIT SCAN] Image Scan Path " + str(path), file = log)
-        print(" > [INIT SCAN] Image Scan Path " + str(path))
+        print(timestamp(self) + " > [INIT SCAN] Image Scan Path " + str(path), file = log)
+        print(timestamp(self) + " > [INIT SCAN] Image Scan Path " + str(path))
 
         self.Command.setText("Init Scanning!")
 
-        print(" > [INIT SCAN] Scanning!", file = log)
-        print(" > [INIT SCAN] Scanning!")
+        print(timestamp(self) + " > [INIT SCAN] Scanning!", file = log)
+        print(timestamp(self) + " > [INIT SCAN] Scanning!")
 
         plugin = self.work.toPlainText()
 
-        print(" > [INIT SCAN] Imageinfo Scan", file = log)
-        print(" > [INIT SCAN] Imageinfo Scan")
+        print(timestamp(self) + " > [INIT SCAN] Imageinfo Scan", file = log)
+        print(timestamp(self) + " > [INIT SCAN] Imageinfo Scan")
 
         #Run Volatility With Subprocess
         shell = ['volatility_2.6_win64_standalone.exe','-f', str(path), 'imageinfo']
@@ -79,8 +79,8 @@ class MyWindow(QMainWindow, ui):
         print (data, file = imageinfo) #init_info(imageinfo) Save
 
         self.Command.setText("Scanned!")
-        print(" > [INIT SCAN] Scanned!", file = log)
-        print(" > [INIT SCAN] Scanned!")
+        print(timestamp(self) + " > [INIT SCAN] Scanned!", file = log)
+        print(timestamp(self) + " > [INIT SCAN] Scanned!")
 
         self.Command_Result.setText(data)
 
@@ -89,18 +89,18 @@ class MyWindow(QMainWindow, ui):
         path = self.file_path.toPlainText()
         path = pathlib.Path(path)
 
-        print(" > [SCAN] Image Scan Path " + str(path), file = log)
-        print(" > [SCAN] Image Scan Path " + str(path))
+        print(timestamp(self) + " > [SCAN] Image Scan Path " + str(path), file = log)
+        print(timestamp(self) + " > [SCAN] Image Scan Path " + str(path))
 
         self.Command.setText("Scanning!")
 
-        print(" > [SCAN] Scanning!", file = log)
-        print(" > [SCAN] Scanning!")
+        print(timestamp(self) + " > [SCAN] Scanning!", file = log)
+        print(timestamp(self) + " > [SCAN] Scanning!")
 
         plugin = self.work.toPlainText()
 
-        print(" > [SCAN] Plugin : " + plugin, file = log)
-        print(" > [SCAN] Plugin : " + plugin)
+        print(timestamp(self) + " > [SCAN] Plugin : " + plugin, file = log)
+        print(timestamp(self) + " > [SCAN] Plugin : " + plugin)
 
         #Run Volatility With Subprocess
         shell = ['volatility_2.6_win64_standalone.exe','-f', str(path), plugin]
@@ -112,8 +112,8 @@ class MyWindow(QMainWindow, ui):
         print (data, file = plugin_log)
 
         self.Command.setText("Scanned!")
-        print(" > [SCAN] Scanned!", file = log)
-        print(" > [SCAN] Scanned!")
+        print(timestamp(self) + " > [SCAN] Scanned!", file = log)
+        print(timestamp(self) + " > [SCAN] Scanned!")
 
         self.Command_Result.setText(data)
 
@@ -121,14 +121,14 @@ class MyWindow(QMainWindow, ui):
 
     #Plugin - imageinfo
     def imageinfo(self):
-        print(" > [PLUGIN] imageinfo Selected!", file = log)
-        print(" > [PLUGIN] imageinfo Selected!")
+        print(timestamp(self) + " > [PLUGIN] imageinfo Selected!", file = log)
+        print(timestamp(self) + " > [PLUGIN] imageinfo Selected!")
         self.work.setText('imageinfo')
 
         #File Path Set
         pwd = os.getcwd() + "\plugin\imageinfo\Extract_Image_information.py"
-        print(" > [PLUGIN] imageinfo manage : ", pwd, file = log)
-        print(" > [PLUGIN] imageinfo manage : ", pwd)
+        print(timestamp(self) + " > [PLUGIN] imageinfo manage : ", pwd, file = log)
+        print(timestamp(self) + " > [PLUGIN] imageinfo manage : ", pwd)
 
         #Call Plugin
         subprocess.call(["python", pwd])
@@ -170,10 +170,10 @@ class MyWindow(QMainWindow, ui):
 
     #Exit
     def Exit(self):
-        print(" > [EXIT] Exit! Bye", file = log)
-        print(" > [EXIT] Exit! Bye")
+        print(timestamp(self) + " > [EXIT] Exit! Bye", file = log)
+        print(timestamp(self) + " > [EXIT] Exit! Bye")
         self.exit.clicked.connect(app.quit)
-
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     myWindow = MyWindow()
