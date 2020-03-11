@@ -27,18 +27,20 @@ def findSentence(fileName, findText):
 def cleanText(readData):
     text = re.sub('[(),:]','',readData)
     return text
+
+
 #---------------Find Image--------------
 #Find Unique Word (Win)
-result = findSentence(path, "Win")
-for sentence in result:
-    extact_sentece = sentence
-if __name__ == "__main__":
-    oriText = extact_sentece
-    del_speical_word_image = cleanText(oriText)
-#Del SpaceBar
-replace_space_bar_image = del_speical_word_image.replace(" ","")
-image_information = replace_space_bar_image[17:28]
-print ('Image Profile :',image_information, file = imageinfo_result)
+imageinfo = open(path, 'r')
+line = imageinfo.readlines()
+string = str(line[0])
+imageinfo.close
+temp1 = string[string.find(":")+1:]
+temp2 = temp1.strip().split(", ")
+# print(temp2[0], file = imageinfo_result)
+print ('Image Profile :', temp2[0], ",", temp2[1], file = imageinfo_result)
+
+
 #--------------------------FilePath---------------------
 fileaddress = findSentence(path, "FileAddressSpace")
 #Del Unique Word - File Space
@@ -52,6 +54,8 @@ replace_space_bar_file_space = del_speical_word_file_space.replace(" ","")
 i = len(replace_space_bar_file_space)
 file_space = replace_space_bar_file_space[24:i-1]
 print ('Image File Path :',file_space, file = imageinfo_result)
+
+
 #------------Image date and time--------------
 imagedataandtime = findSentence(path, "Image date and time")
 #Del Unique Word - Image date and time
@@ -65,3 +69,5 @@ replace_space_bar_image_data_and_time = del_speical_word_image_data_and_time.rep
 i = len(replace_space_bar_image_data_and_time)
 image_data_and_time = replace_space_bar_image_data_and_time[20:i-1]
 print ('Image Date And Time :',image_data_and_time, file = imageinfo_result)
+
+print (temp2[0], file = imageinfo_result)

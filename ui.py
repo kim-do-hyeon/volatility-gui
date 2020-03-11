@@ -117,11 +117,12 @@ class MyWindow(QMainWindow, ui):
 
         self.Command_Result.setText(data)
 
+#------------------------------------------------------------------------------
+
     #Plugin - imageinfo
     def imageinfo(self):
         print(" > [PLUGIN] imageinfo Selected!", file = log)
         print(" > [PLUGIN] imageinfo Selected!")
-        self.statusbar.showMessage("Selected imageinfo!")
         self.work.setText('imageinfo')
 
         #File Path Set
@@ -132,11 +133,22 @@ class MyWindow(QMainWindow, ui):
         #Call Plugin
         subprocess.call(["python", pwd])
 
-        #Result Manage
+        #File Open
         imageinfo_result_file = open('plugin/imageinfo/imageinfo_result.txt','r')
+
+        #Get Profile
+        line = imageinfo_result_file.readlines()
+        profile = line[5]
+        self.os.setText(profile)
+
+        #Result Manage
         Textstring = imageinfo_result_file.read()
         self.Command_Result.setText(Textstring)
+
+        #File Close
         imageinfo_result_file.close()
+
+        
         
 #--------------------PLUGIN----------------------------------------------#
 
@@ -146,7 +158,6 @@ class MyWindow(QMainWindow, ui):
         Textstring = cmdscan_result_file.read()
         self.Command_Result.setText(Textstring)
         cmdscan_result_file.close()
-        self.statusbar.showMessage("Selected Cmdscan!")
         self.work.setText('cmdscan')
 
     #Plugin - pslist
@@ -155,7 +166,6 @@ class MyWindow(QMainWindow, ui):
         Textstring = pslist_result_file.read()
         self.Command_Result.setText(Textstring)
         pslist_result_file.close()
-        self.statusbar.showMessage("Selected pslist!")
         self.work.setText('pslist')
 
     #Exit
