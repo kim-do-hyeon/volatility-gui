@@ -6,32 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>751</width>
-    <height>398</height>
+    <width>903</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Volatility GUI by Pental</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="scan">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>330</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Scan</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="exit">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>330</y>
+      <x>810</x>
+      <y>450</y>
       <width>81</width>
       <height>21</height>
      </rect>
@@ -43,8 +30,8 @@
    <widget class="QLabel" name="Command">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>330</y>
+      <x>20</x>
+      <y>460</y>
       <width>211</width>
       <height>20</height>
      </rect>
@@ -56,52 +43,13 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>190</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QPushButton" name="init_scan">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>10</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Init Scan</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>91</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>IMAGE SCAN</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QToolButton" name="open_file_btn">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>770</x>
       <y>10</y>
       <width>121</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -111,11 +59,14 @@
    <widget class="QTextBrowser" name="file_path">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>90</x>
       <y>10</y>
-      <width>601</width>
-      <height>31</height>
+      <width>671</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -123,7 +74,7 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>731</width>
+      <width>881</width>
       <height>16</height>
      </rect>
     </property>
@@ -136,8 +87,8 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>731</width>
-      <height>121</height>
+      <width>881</width>
+      <height>381</height>
      </rect>
     </property>
    </widget>
@@ -145,82 +96,17 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>400</y>
+      <y>510</y>
       <width>741</width>
       <height>61</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_2">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>190</y>
-      <width>101</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QRadioButton" name="imageinfo_btn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>90</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>imageinfo</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="cmdscan_btn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>90</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>cmdscan</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="pstree_btn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>90</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>pstrss</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="Line" name="line_3">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>180</y>
-      <width>20</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
     </property>
    </widget>
    <widget class="QLabel" name="os">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>440</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -229,13 +115,109 @@
      <string/>
     </property>
    </widget>
+   <widget class="QComboBox" name="plugin_list">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>452</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="currentText">
+     <string>Plugin List</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Plugin List</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.info</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.pslist</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.psscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.pstree</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.driverscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.handles</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.cmdline</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>11</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>맑은 고딕</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>IMAGE</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="scan_vol3">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>450</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>scan</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>751</width>
+     <width>903</width>
      <height>21</height>
     </rect>
    </property>
