@@ -4,8 +4,7 @@
 * pental@kakao.com
 
 # Install
-* pip install pyqt
-* git clone https://github.com/volatilityfoundation/volatility3.git & <b>Move work folder</b>
+* Run start.bat
 
 # Run
 * <b>python ui.py</b>
