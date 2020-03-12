@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>903</width>
-    <height>483</height>
+    <height>485</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,7 +119,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>452</y>
+      <y>451</y>
       <width>141</width>
       <height>20</height>
      </rect>
@@ -204,11 +204,11 @@
       <x>730</x>
       <y>450</y>
       <width>75</width>
-      <height>23</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>scan</string>
+     <string>Scan</string>
     </property>
    </widget>
   </widget>

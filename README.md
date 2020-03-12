@@ -5,7 +5,10 @@
 
 # Install
 * pip install pyqt
-* git clone https://github.com/volatilityfoundation/volatility3.git & Move work folder
+* git clone https://github.com/volatilityfoundation/volatility3.git & <b>Move work folder</b>
+
+# Run
+* <b>python ui.py</b>
 
 # Update List
 * 2020-02-04 Pyqt5 Install, Simple Pyqt5 Programming
