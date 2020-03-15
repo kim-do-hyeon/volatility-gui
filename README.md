@@ -4,7 +4,7 @@
 * pental@kakao.com
 
 # Install
-* Run start.bat
+* <b>Run start.bat</b>
 
 # Run
 * <b>python ui.py</b>
@@ -13,3 +13,4 @@
 * 2020-02-04 Pyqt5 Install, Simple Pyqt5 Programming
 * 2020-03-11 Early stage ui, Scan implementation
 * 2020-03-12 Stable ui, added plug-in scan function to the list
+* 2020-03-15 Link database and add value
