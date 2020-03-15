@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>903</width>
-    <height>485</height>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -118,8 +118,8 @@
    <widget class="QComboBox" name="plugin_list">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>451</y>
+      <x>420</x>
+      <y>450</y>
       <width>141</width>
       <height>20</height>
      </rect>
@@ -209,6 +209,32 @@
     </property>
     <property name="text">
      <string>Scan</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="save_log_btn">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>450</y>
+      <width>75</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save Log</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_db_btn">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>450</y>
+      <width>75</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add DB</string>
     </property>
    </widget>
   </widget>
