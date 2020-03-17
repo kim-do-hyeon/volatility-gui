@@ -137,7 +137,77 @@
     </item>
     <item>
      <property name="text">
+      <string>windows.callbacks</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.cmdline</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.dlldump</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.dlllist</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.driverscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.filescan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.handles</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>windows.info</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.malfind</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.moddump</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.modscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.modules</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.mutantscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.poolscanner</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.procdump</string>
      </property>
     </item>
     <item>
@@ -157,17 +227,67 @@
     </item>
     <item>
      <property name="text">
-      <string>windows.driverscan</string>
+      <string>windows.registry.certificates</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>windows.handles</string>
+      <string>windows.registry.printkey</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>windows.cmdline</string>
+      <string>windows.registry.userassist</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.ssdt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.statistics</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.strings</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.svcscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.symlinkscan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.vaddump</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.vadinfo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.vadyarascan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.verinfo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>windows.virtmap</string>
      </property>
     </item>
    </widget>
