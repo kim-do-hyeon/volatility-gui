@@ -16,4 +16,4 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * 2020-03-11 Early stage ui, Scan implementation
 * 2020-03-12 Stable ui, added plug-in scan function to the list
 * 2020-03-15 Link database and add value
-* 2020-03-17 Add all plugin
+* 2020-03-17 Add all plugin, Database linkage plugin update
