@@ -10,6 +10,12 @@
     <height>482</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>903</width>
+    <height>482</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Volatility GUI by Pental</string>
   </property>
@@ -118,9 +124,9 @@
    <widget class="QComboBox" name="plugin_list">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>330</x>
       <y>450</y>
-      <width>141</width>
+      <width>231</width>
       <height>20</height>
      </rect>
     </property>
