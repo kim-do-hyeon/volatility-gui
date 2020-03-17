@@ -2,6 +2,7 @@ import os
 import sys
 import pathlib
 import subprocess
+import plugin
 from datetime import datetime
 from PyQt5 import uic
 from PyQt5.QtGui import *
@@ -68,7 +69,7 @@ class MyWindow(QMainWindow, ui):
         data = fd_open.read().strip().decode('euc-kr')
         fd_open.close()
 
-        save_log_path = 'plugin/init/' + plugin + '.txt'
+        save_log_path = 'plugin/init/' + plugin + '/' + plugin + '.txt'
         plugin_log = open(str(save_log_path),'w',-1,"utf-8")
         print (data, file = plugin_log)
 
@@ -89,13 +90,11 @@ class MyWindow(QMainWindow, ui):
 
     #Add Db
     def add_db(self):
-        print('add')
-        # plugin = self.work.toPlainText() #Call Plugin Text
-
-        # add_db_path = os.getcwd() + "/plugin/init/" + plugin + "/*.py"
-        # path = pathlib.Path(add_db_path)
-        # shell = ['python', path]
-        # os.system(shell)
+        plugin = self.work.toPlainText()
+        print(plugin)
+        path = os.getcwd() + "/plugin/init/" + plugin + "/" + plugin + ".py"
+        path = pathlib.Path(path)
+        os.system('python ' + str(path))
 
 
     #Save Log
