@@ -12,7 +12,6 @@ t = t.replace('\n\n',"\t")
 t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
 my_list = t.split('\t')
 result = [my_list[i * 7:(i + 1) * 7] for i in range((len(my_list) + 6) // 7 )] 
-print(result) 
 
 conn = sqlite3.connect("analyze.db")
 cur = conn.cursor()
@@ -20,9 +19,5 @@ cur.execute("create table registry_printkey (Last_Write_Time text, Hive_Offset t
 
 cur.executemany("insert into registry_printkey values (?, ?, ?, ?, ?, ?, ?)", result)
 conn.commit()
-
-cur.execute('select * from registry_printkey')
-for row in cur:
-    print(row)
 
 conn.close()

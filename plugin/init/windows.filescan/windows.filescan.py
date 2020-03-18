@@ -12,7 +12,6 @@ t = t.replace('\n\n',"\t")
 t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
 my_list = t.split('\t')
 result = [my_list[i * 2:(i + 1) * 2] for i in range((len(my_list) + 1) // 2 )] 
-print(result) 
 
 conn = sqlite3.connect("analyze.db")
 cur = conn.cursor()
@@ -20,9 +19,5 @@ cur.execute("create table filescan (offset text, Name text)")
 
 cur.executemany("insert into filescan values (?, ?)", result)
 conn.commit()
-
-cur.execute('select * from filescan')
-for row in cur:
-    print(row)
 
 conn.close()

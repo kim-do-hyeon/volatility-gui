@@ -12,7 +12,6 @@ t = t.replace('\n\n',"\t")
 t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
 my_list = t.split('\t')
 result = [my_list[i * 12:(i + 1) * 12] for i in range((len(my_list) + 11) // 12 )] 
-print(result) 
 
 conn = sqlite3.connect("analyze.db")
 cur = conn.cursor()
@@ -20,9 +19,5 @@ cur.execute("create table registry_userassist (Hive_Offset text,	Hive_Name_Path 
 
 cur.executemany("insert into registry_userassist values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", result)
 conn.commit()
-
-cur.execute('select * from registry_userassist')
-for row in cur:
-    print(row)
 
 conn.close()

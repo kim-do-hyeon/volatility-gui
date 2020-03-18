@@ -13,7 +13,6 @@ t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
 t = t.replace('\n',"\t")
 my_list = t.split('\t')
 result = [my_list[i * 2:(i + 1) * 2] for i in range((len(my_list) + 1) // 2 )] 
-print(result) 
 
 conn = sqlite3.connect("analyze.db")
 cur = conn.cursor()
@@ -21,9 +20,5 @@ cur.execute("create table info (Variable text, Value text)")
 
 cur.executemany("insert into info values (?, ?)", result)
 conn.commit()
-
-cur.execute('select * from info')
-for row in cur:
-    print(row)
 
 conn.close()

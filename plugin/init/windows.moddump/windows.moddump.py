@@ -11,9 +11,7 @@ t = t.replace('Base	Name	Result','')
 t = t.replace('\n\n',"\t")
 t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
 my_list = t.split('\t')
-print(my_list)
 result = [my_list[i * 3:(i + 1) * 3] for i in range((len(my_list) + 2) // 3 )] 
-print(result) 
 
 conn = sqlite3.connect("analyze.db")
 cur = conn.cursor()
@@ -21,9 +19,5 @@ cur.execute("create table moddump (Base text, Name text, Result text)")
 
 cur.executemany("insert into moddump values (?, ?, ?)", result)
 conn.commit()
-
-cur.execute('select * from moddump')
-for row in cur:
-    print(row)
 
 conn.close()
