@@ -5,6 +5,7 @@ import pathlib
 path = os.getcwd() + "/plugin/init/windows.poolscanner/windows.poolscanner.txt"
 path = pathlib.Path(path)
 f = open(path, 'r', encoding='utf-8')
+t = f.read()
 t = t.replace('Volatility 3 Framework 1.0.0-beta.1','')
 t = t.replace('Tag	Offset	Layer	Name','')
 t = t.replace('\n\n',"\t")
