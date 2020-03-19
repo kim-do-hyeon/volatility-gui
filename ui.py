@@ -18,7 +18,16 @@ def timestamp(self):
     return time
 
 ui = uic.loadUiType("gui.ui")[0]
-
+text = 'Volatility GUI environment. Sourced By PENTAL \
+        \n \
+        \n 1. Mount the image first.\
+        \n 2. After setting the plug-in, press the scan button.\
+        \n 3. Click the ADD DB button to check the result and add the database frame. \
+        \n 4. Click the EXIT button to exit. \
+        \n \n \
+        Update & issue https://github.com/kim-do-hyeon/Volaltility-gui \
+        \n Thanks for your use this program. \
+        \n If possible, I would appreciate it if you hit the star button on github.'
 #Main Window
 class MyWindow(QMainWindow, ui):
     def __init__(self):
@@ -39,6 +48,8 @@ class MyWindow(QMainWindow, ui):
 
         #Call Plugin
         self.plugin_list.currentIndexChanged.connect(self.pluginlist)
+
+        self.Command_Result.setText(text)
 
     #Call Plugin List
     def pluginlist(self):
@@ -107,6 +118,7 @@ class MyWindow(QMainWindow, ui):
 
     #Exit
     def Exit(self):
+
         print(timestamp(self) + " > [EXIT] Exit! Bye", file = log)
         print(timestamp(self) + " > [EXIT] Exit! Bye")
         self.exit.clicked.connect(app.quit)
