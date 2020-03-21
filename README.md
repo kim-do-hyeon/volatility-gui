@@ -10,7 +10,7 @@ If you don't have the 'git' program installed, it won't be 'git clone'.
 Then go directly to the address 'https://github.com/volatilityfoundation/volatility3.git' and download it.
 
 # Run
-* <b>Run volatility gui.exe</b>
+* <b>python ui.py</b>
 
 # Update List
 * 2020-03-11 Early stage ui, Scan implementation
@@ -21,7 +21,6 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * 2020-03-19 Update timestamp
 * 2020-03-21 Visualize the values ​​in the database by linking the database and flask <br>
 Add save log function, Add extensions filtering
-> Create exe executable (Version 1.0) (volatility gui.exe)
 
 
 # Example Memory
