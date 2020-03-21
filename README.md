@@ -19,9 +19,7 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * 2020-03-17 Add all plugin, Database linkage plugin update
 * 2020-03-18 Update plugin, Stabilized database linkage
 * 2020-03-19 Update timestamp
+* 2020-03-21 Visualize the values ​​in the database by linking the database and flask
 
 # Example Memory
 * <a href = 'https://drive.google.com/open?id=1RjjnR6MEXgJrbvmCRXDxYfKYxXx5W9IC'>Windows XP SP2 (512MB)</a>
-
-# Later Update..
-* Visualize the values ​​in the database by linking the database and flask
