@@ -92,7 +92,8 @@ class MyWindow(QMainWindow, ui):
 
     #Call File Function
     def callfile(self):
-        fname = QFileDialog.getOpenFileName(self) 
+        strFilter = "Raw file (*.raw) ;; Memory file (*.mem) ;; All files (*.*)";
+        fname = QFileDialog.getOpenFileName(self, "Load Image", filter=strFilter)
         self.file_path.setText(fname[0])
         path = pathlib.Path(fname[0])
         print(timestamp(self) + " > [CALL FILE] Selected Image Path " + str(path), file = log)
@@ -113,8 +114,18 @@ class MyWindow(QMainWindow, ui):
 
     #Save Log
     def save_log(self):
-        print('save_log')
-
+        txt = self.Command_Result.toPlainText()
+        savefilename = QFileDialog.getSaveFileName(self, "Save File", filter="*.txt")
+        print(timestamp(self) + " > [SAVE LOG] Save Path " + savefilename[0], file = log)
+        print(timestamp(self) + " > [SAVE LOG] Save Path " + savefilename[0])
+        if savefilename == "":
+            return
+            print("ERR")
+        f = open(savefilename[0],'wb')
+        f.write(txt.encode())
+        f.close()
+        print(timestamp(self) + " > [SAVE LOG] Saved!", file = log)
+        print(timestamp(self) + " > [SAVE LOG] Saved!")
 
     #Exit
     def Exit(self):

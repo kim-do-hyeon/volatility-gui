@@ -21,6 +21,7 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * 2020-03-19 Update timestamp
 * 2020-03-21 Visualize the values ​​in the database by linking the database and flask
 * Create exe executable (Version 1.0) (volatility gui.exe)
+* Add save log function, Add extensions filtering
 
 # Example Memory
 * <a href = 'https://drive.google.com/open?id=1RjjnR6MEXgJrbvmCRXDxYfKYxXx5W9IC'>Windows XP SP2 (512MB)</a>
