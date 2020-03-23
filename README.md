@@ -4,7 +4,7 @@
 * pental@kakao.com
 
 # Install
-* <b>Run start.bat</b>
+* <b>Run install.bat</b>
 
 If you don't have the 'git' program installed, it won't be 'git clone'.
 Then go directly to the address 'https://github.com/volatilityfoundation/volatility3.git' and download it.
