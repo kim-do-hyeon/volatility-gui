@@ -9,7 +9,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 #Record Log
-log = open('vol_log.txt','w',-1,"utf-8")
+log = open('log.txt','w',-1,"utf-8")
 
 #Time Stamp
 def timestamp(self):
