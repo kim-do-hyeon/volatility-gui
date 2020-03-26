@@ -19,8 +19,8 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * 2020-03-17 Add all plugin, Database linkage plugin update
 * 2020-03-18 Update plugin, Stabilized database linkage
 * 2020-03-19 Update timestamp
-* 2020-03-21 Visualize the values ​​in the database by linking the database and flask <br>
-Add save log function, Add extensions filtering
+* <del>2020-03-21 Visualize the values ​​in the database by linking the database and flask <br>
+Add save log function, Add extensions filtering</del>
 
 
 # Example Memory
