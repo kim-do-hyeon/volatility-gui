@@ -18,7 +18,6 @@ windows.registry.printkey
 windows.registry.userassist
 windows.ssdt
 windows.statistics
-windows.strings
 windows.symlinkscan
 windows.vadinfo
 windows.verinfo
