@@ -22,6 +22,7 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 * <del>2020-03-21 Visualize the values ​​in the database by linking the database and flask <br>
 Add save log function, Add extensions filtering</del>
 * 2020-09-29 Auto Analyzer with DB Store Function<br>
+* 2020-11-30 Visualize the values in the database by linking the database and GUI
 
 # Example Memory
 * <a href = 'https://drive.google.com/open?id=1RjjnR6MEXgJrbvmCRXDxYfKYxXx5W9IC'>Windows XP SP2 (512MB)</a>
