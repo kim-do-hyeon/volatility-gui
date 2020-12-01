@@ -1,43 +1,26 @@
 import os
-import re
 import sys
 import pathlib
 import subprocess
-from datetime import datetime
 
 from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-import plugin
+from . import plugin
+from .util import *
 
-
-volatility3 = os.getcwd() + '/volatility3/vol.py'
 log_file = open('log.txt', 'w', -1, 'utf-8')
-
-def timestamp():
-    return datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-    # now = datetime.now()
-    # time = "{}{}{}{}{}{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second) #timestamp 형식
-    # return time
 
 def log(message):
     message = timestamp() + ' > ' + message
     print(message, file=log_file)
     print(message)
 
-def fix_file_name(name):
-    return re.sub('[\/:*?"<>|]', '', name)
-
-def remove_all_file(path):
-    if os.path.exists(path):
-        for file in os.scandir(path):
-            os.remove(file.path)
-
 ####################################
 
-ui = uic.loadUiType("gui.ui")[0]
+ui = uic.loadUiType('src/main.ui')[0]
 default_message = 'Volatility GUI environment. Sourced By PENTAL \
         \n \
         \n 1. Mount the image first.\
@@ -113,6 +96,15 @@ class MyWindow(QMainWindow, ui):
 
 
     def btn_scan_click(self):
+        if not is_volatility_exists():
+            reply = QMessageBox.question(self, 'Case Exists', 'Cannot find volatility3.\nWould you like to download it?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.No:
+                return
+            self.set_enabled(False)
+            download_volatility()
+            self.set_enabled(True)
+            QMessageBox.information(self, 'Downloaded', 'Download Complete!', QMessageBox.Ok, QMessageBox.Ok)
+
         # Image Path
         image_path = self.txt_image_path.toPlainText()
         if (image_path == ''):
@@ -215,7 +207,6 @@ class MyWindow(QMainWindow, ui):
         log('[EXIT] Exit! Bye')
         QCoreApplication.quit()
 
-
  
 class ScanThread(QThread):
     evt_result_append = pyqtSignal(str)
@@ -240,9 +231,10 @@ class ScanThread(QThread):
 
     def run(self):
         start_time = timestamp()
+        lib_path = get_volatility_path()
 
         for plugin_name in self.plugins:
-            shell = ['python', volatility3, '-f', self.image_path, plugin_name]
+            shell = ['python', lib_path, '-f', self.image_path, plugin_name]
             log('[SCAN] Current Plugin: ' + plugin_name)
             log('[SCAN] Run: ' + ' '.join(shell))
             self.evt_status_changed.emit('Scanning: ' + plugin_name)
@@ -271,8 +263,12 @@ class ScanThread(QThread):
         self.evt_scan_finished.emit()
 
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     myWindow = MyWindow()
     myWindow.show()
     app.exec_()
+
+
+if __name__ == "__main__":
+    main()
