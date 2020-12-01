@@ -3,14 +3,10 @@
 * Source by Pental
 * pental@kakao.com
 
-# Install
-* <b>Run install.bat</b>
-
-If you don't have the 'git' program installed, it won't be 'git clone'.
-Then go directly to the address 'https://github.com/volatilityfoundation/volatility3.git' and download it.
-
 # Run
-* <b>python ui.py</b>
+```py
+python run.py
+```
 
 # Update List
 * 2020-03-11 Early stage ui, Scan implementation
@@ -24,6 +20,7 @@ Add save log function, Add extensions filtering</del>
 * 2020-09-29 Auto Analyzer with DB Store Function<br>
 * 2020-11-30 Visualize the values in the database by linking the database and GUI
 * 2020-12-01 Clean up the commit history and optimize repo size
+* 2020-12-01 Update UI and add library download
 
 # Example Memory
 * <a href = 'https://drive.google.com/open?id=1RjjnR6MEXgJrbvmCRXDxYfKYxXx5W9IC'>Windows XP SP2 (512MB)</a>
