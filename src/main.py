@@ -21,7 +21,8 @@ def log(message):
 
 ####################################
 
-ui = uic.loadUiType('src/main.ui')[0]
+ui = uic.loadUiType('res/main.ui')[0]
+
 default_message = 'Volatility GUI environment. Sourced By PENTAL \
         \n \
         \n 1. Mount the image first.\
@@ -38,7 +39,8 @@ class MainWindow(QMainWindow, ui):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon(os.getcwd() + '\src\icon.ico'))
+        self.setWindowIcon(QIcon('res/icon.ico'))
+        
         # Button
         self.btn_image_open.clicked.connect(self.btn_image_open_click)
         self.btn_plugin_check.clicked.connect(self.btn_plugin_check_click)
