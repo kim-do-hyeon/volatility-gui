@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import *
 
 from . import plugin
 from .util import *
+from .analyzer import AnalyzerWindow
 
 log_file = open('log.txt', 'w', -1, 'utf-8')
 
@@ -33,7 +34,7 @@ default_message = 'Volatility GUI environment. Sourced By PENTAL \
         \n If possible, I would appreciate it if you hit the star button on github.'
 
 
-class MyWindow(QMainWindow, ui):
+class MainWindow(QMainWindow, ui):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -70,7 +71,8 @@ class MyWindow(QMainWindow, ui):
         self.th_scan.evt_scan_finished.connect(self.th_scan_finish_handler)
 
     def examine_click(self):
-        os.system('python src/examine.py')
+        self.win_analyzer = AnalyzerWindow()
+        self.win_analyzer.show()
     
     def auto_analyze_click(self):
         os.system('python src/auto.py')
@@ -103,7 +105,7 @@ class MyWindow(QMainWindow, ui):
 
     def btn_scan_click(self):
         if not is_volatility_exists():
-            reply = QMessageBox.question(self, 'Case Exists', 'Cannot find volatility3.\nWould you like to download it?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            reply = QMessageBox.question(self, 'No Library', 'Cannot find volatility3.\nWould you like to download it?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if reply == QMessageBox.No:
                 return
             self.set_enabled(False)
@@ -272,8 +274,8 @@ class ScanThread(QThread):
 
 def main():
     app = QApplication(sys.argv)
-    myWindow = MyWindow()
-    myWindow.show()
+    window = MainWindow()
+    window.show()
     app.exec_()
 
 

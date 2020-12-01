@@ -1,78 +1,24 @@
 import os
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-import sqlite3
 import pathlib
+import sqlite3
+import subprocess
+
+from PyQt5 import uic
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+
+from . import plugin
 
 
-class Ui_VAGA(object):
-    def setupUi(self, VAGA):
-        VAGA.setObjectName("VAGA")
-        VAGA.resize(1280, 550)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("src/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        
-        VAGA.setWindowIcon(icon)
-        VAGA.setStyleSheet("background-color: rgb(255, 255, 255);")
-        
-        self.tableWidget = QtWidgets.QTableWidget(VAGA)
-        self.tableWidget.setGeometry(QtCore.QRect(100, 80, 1150, 370))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
+ui = uic.loadUiType('src/analyzer.ui')[0]
 
-        self.file_path = QtWidgets.QTextBrowser(VAGA)
-        self.file_path.setGeometry(QtCore.QRect(10, 10, 421, 31))
-        self.file_path.setObjectName("file_path")
-        
-        self.select = QtWidgets.QPushButton(VAGA)
-        self.select.setGeometry(QtCore.QRect(440, 10, 75, 31))
-        self.select.setObjectName("select")
-
-        self.analyze = QtWidgets.QPushButton(VAGA)
-        self.analyze.setGeometry(QtCore.QRect(520, 10, 75, 31))
-        self.analyze.setObjectName("analyze")
-
-        self.pslist = QtWidgets.QPushButton(VAGA)
-        self.pslist.setGeometry(QtCore.QRect(10, 80, 75, 24))
-        self.pslist.setIcon(icon)
-        self.pslist.setObjectName("pslist")
-
-        self.psscan = QtWidgets.QPushButton(VAGA)
-        self.psscan.setGeometry(QtCore.QRect(10, 110, 75, 24))
-        self.psscan.setIcon(icon)
-        self.psscan.setObjectName("psscan")
-
-        self.pstree = QtWidgets.QPushButton(VAGA)
-        self.pstree.setGeometry(QtCore.QRect(10, 140, 75, 24))
-        self.pstree.setIcon(icon)
-        self.pstree.setObjectName("pstree")
-        
-        self.info = QtWidgets.QPushButton(VAGA)
-        self.info.setGeometry(QtCore.QRect(10, 170, 75, 24))
-        self.info.setIcon(icon)
-        self.info.setObjectName("info")
-
-        self.cmdline = QtWidgets.QPushButton(VAGA)
-        self.cmdline.setGeometry(QtCore.QRect(10, 200, 75, 24))
-        self.cmdline.setIcon(icon)
-        self.cmdline.setObjectName("cmdline")
-
-        self.dlllist = QtWidgets.QPushButton(VAGA)
-        self.dlllist.setGeometry(QtCore.QRect(10, 230, 75, 24))
-        self.dlllist.setIcon(icon)
-        self.dlllist.setObjectName("dlllist")
-
-        self.log_report = QtWidgets.QLabel(VAGA)
-        self.log_report.setGeometry(QtCore.QRect(10, 520, 640, 21))
-        self.log_report.setObjectName("log_report")
-
-        self.line = QtWidgets.QFrame(VAGA)
-        self.line.setGeometry(QtCore.QRect(0, 500, 1281, 16))
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
+class AnalyzerWindow(QWidget, ui):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.setWindowIcon(QIcon('icon.png'))
 
         #Button Click
         self.select.clicked.connect(self.callfile)
@@ -82,43 +28,27 @@ class Ui_VAGA(object):
         self.pstree.clicked.connect(self.pstree_analyze)
         self.cmdline.clicked.connect(self.cmdline_analyze)
         self.dlllist.clicked.connect(self.dlllist_analyze)
-        
-        self.retranslateUi(VAGA)
-        QtCore.QMetaObject.connectSlotsByName(VAGA)
 
-    def retranslateUi(self, VAGA):
-        _translate = QtCore.QCoreApplication.translate
-        VAGA.setWindowTitle(_translate("VAGA", "VAGA - Volatility GUI Analyzer"))
-        self.select.setText(_translate("VAGA", "Select"))
-        self.analyze.setText(_translate("VAGA", "Analyze"))
-        self.pslist.setText(_translate("VAGA", "pslist"))
-        self.psscan.setText(_translate("VAGA", "psscan"))
-        self.pstree.setText(_translate("VAGA", "pstree"))
-        self.info.setText(_translate("VAGA", "info"))
-        self.cmdline.setText(_translate("VAGA", "cmdline"))
-        self.info.setText(_translate("VAGA", "info"))
-        self.dlllist.setText(_translate("VAGA", "dlllist"))
-        self.log_report.setText(_translate("VAGA", "Select DataBase File!!"))
 
     def pslist_analyze(self):
         self.log_report.setText("Selected Pslist!!")
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(11)
         self.tableWidget.setRowCount(len(pslist))
 
         for i in range(len(pslist)):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setVerticalHeaderItem(i, item)
         
         for i in range(11):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setHorizontalHeaderItem(i, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = QTableWidgetItem()
 
         for j in range(len(pslist)):
             for i in range(11):
                 self.tableWidget.setItem(j, i, item)
-                item = QtWidgets.QTableWidgetItem()
+                item = QTableWidgetItem()
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("VAGA", "PID"))
@@ -154,23 +84,23 @@ class Ui_VAGA(object):
 
     def psscan_analyze(self):
         self.log_report.setText("Selected Psscan!!")
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(11)
         self.tableWidget.setRowCount(len(psscan))
 
         for i in range(len(psscan)):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setVerticalHeaderItem(i, item)
         
         for i in range(11):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setHorizontalHeaderItem(i, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = QTableWidgetItem()
 
         for j in range(len(psscan)):
             for i in range(11):
                 self.tableWidget.setItem(j, i, item)
-                item = QtWidgets.QTableWidgetItem()
+                item = QTableWidgetItem()
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("VAGA", "PID"))
@@ -206,23 +136,23 @@ class Ui_VAGA(object):
 
     def pstree_analyze(self):
         self.log_report.setText("Selected Pstree!!")
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(10)
         self.tableWidget.setRowCount(len(psscan))
 
         for i in range(len(pstree)):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setVerticalHeaderItem(i, item)
         
         for i in range(10):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setHorizontalHeaderItem(i, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = QTableWidgetItem()
 
         for j in range(len(pstree)):
             for i in range(10):
                 self.tableWidget.setItem(j, i, item)
-                item = QtWidgets.QTableWidgetItem()
+                item = QTableWidgetItem()
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("VAGA", "PID"))
@@ -258,23 +188,23 @@ class Ui_VAGA(object):
 
     def cmdline_analyze(self):
         self.log_report.setText("Selected cmdline!!")
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(len(cmdline))
 
         for i in range(len(cmdline)):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setVerticalHeaderItem(i, item)
         
         for i in range(3):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setHorizontalHeaderItem(i, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = QTableWidgetItem()
 
         for j in range(len(cmdline)):
             for i in range(3):
                 self.tableWidget.setItem(j, i, item)
-                item = QtWidgets.QTableWidgetItem()
+                item = QTableWidgetItem()
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("VAGA", "PID"))
@@ -295,23 +225,23 @@ class Ui_VAGA(object):
 
     def dlllist_analyze(self):
         self.log_report.setText("Selected DLLlist!!")
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(8)
         self.tableWidget.setRowCount(len(dlllist))
 
         for i in range(len(dlllist)):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setVerticalHeaderItem(i, item)
         
         for i in range(8):
-            item = QtWidgets.QTableWidgetItem()
+            item = QTableWidgetItem()
             self.tableWidget.setHorizontalHeaderItem(i, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = QTableWidgetItem()
 
         for j in range(len(dlllist)):
             for i in range(8):
                 self.tableWidget.setItem(j, i, item)
-                item = QtWidgets.QTableWidgetItem()
+                item = QTableWidgetItem()
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("VAGA", "PID"))
@@ -373,11 +303,3 @@ class Ui_VAGA(object):
         dlllist = cur.fetchall()
         self.log_report.setText("Success Analyze")
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    VAGA = QtWidgets.QDialog()
-    ui = Ui_VAGA()
-    ui.setupUi(VAGA)
-    VAGA.show()
-    sys.exit(app.exec_())
