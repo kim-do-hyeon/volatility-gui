@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1147</width>
+    <width>1256</width>
     <height>511</height>
    </rect>
   </property>
@@ -330,6 +330,44 @@
       <string>Linux</string>
      </attribute>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="btn_auto_analyze">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>35</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Auto Analyze</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_examine">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>80</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Examine</string>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -95,7 +95,8 @@ class Ui_Dialog(object):
     def scan(self):
         path = self.file_path.toPlainText()
         path = pathlib.Path(path)
-        volatility3 = os.getcwd() + "/volatility3/vol.py"
+        print(path)
+        volatility3 = os.getcwd() + "lib/volatility3-1.0.0-beta.1/vol.py"
         f = open('plugin_list.txt', 'r', encoding='utf-8')
         plugin_list = f.read().split()
         f.close()

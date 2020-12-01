@@ -44,6 +44,8 @@ class MyWindow(QMainWindow, ui):
         self.btn_plugin_check.clicked.connect(self.btn_plugin_check_click)
         self.btn_plugin_uncheck.clicked.connect(self.btn_plugin_uncheck_click)
         self.btn_scan.clicked.connect(self.btn_scan_click)
+        # self.btn_auto_analyze.clicked.connect(self.auto_analyze_click)
+        self.btn_examine.clicked.connect(self.examine_click)
         self.btn_exit.clicked.connect(self.btn_exit_click)
 
         # Text
@@ -68,7 +70,12 @@ class MyWindow(QMainWindow, ui):
         self.th_scan.evt_status_changed.connect(self.th_scan_status_handler)
         self.th_scan.evt_scan_finished.connect(self.th_scan_finish_handler)
 
-
+    def examine_click(self):
+        os.system('python src/examine.py')
+    
+    def auto_analyze_click(self):
+        os.system('python src/auto.py')
+        
     def list_plugins_item_click(self) :
         item = self.list_plugins.currentItem()
         print(item.text())
@@ -173,10 +180,11 @@ class MyWindow(QMainWindow, ui):
         self.btn_plugin_check.setEnabled(enabled)
         self.btn_plugin_uncheck.setEnabled(enabled)
         self.btn_scan.setEnabled(enabled)
+        self.btn_auto_analyze.setEnabled(enabled)
+        self.btn_examine.setEnabled(enabled)
         self.btn_exit.setEnabled(enabled)
         self.list_plugins.setEnabled(enabled)
-
-
+    
     def add_db(self):
         plugin = self.work.toPlainText()
         path = os.getcwd() + "/plugin/init/" + plugin + "/" + plugin + ".py"
