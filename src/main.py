@@ -37,8 +37,7 @@ class MyWindow(QMainWindow, ui):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('icon.png'))
-
+        self.setWindowIcon(QIcon(os.getcwd() + '\src\icon.ico'))
         # Button
         self.btn_image_open.clicked.connect(self.btn_image_open_click)
         self.btn_plugin_check.clicked.connect(self.btn_plugin_check_click)

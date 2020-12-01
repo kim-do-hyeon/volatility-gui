@@ -11,7 +11,7 @@ class Ui_VAGA(object):
         VAGA.setObjectName("VAGA")
         VAGA.resize(1280, 550)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("src/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         VAGA.setWindowIcon(icon)
         VAGA.setStyleSheet("background-color: rgb(255, 255, 255);")
