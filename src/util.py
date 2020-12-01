@@ -33,14 +33,14 @@ def is_pyqt5_exists():
     return True
 
 def get_volatility_path():
-    return get_lib_path() + '/volatility3-1.0.0-beta.1/vol.py'
+    return get_lib_path() + '/volatility3-master/vol.py'
 
 def is_volatility_exists():
     return os.path.exists(get_volatility_path())
 
 
 def download_volatility():
-    link = 'https://github.com/volatilityfoundation/volatility3/archive/v1.0.0-beta.1.zip'
+    link = 'https://github.com/volatilityfoundation/volatility3/archive/master.zip'
     path = get_lib_path() + '/volatility3.zip'
     file_download(link, path)
     print('Download finish!')
