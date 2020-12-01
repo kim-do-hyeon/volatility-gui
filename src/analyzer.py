@@ -26,6 +26,7 @@ class AnalyzerWindow(QWidget, ui):
         self.pslist.clicked.connect(self.pslist_analyze)
         self.psscan.clicked.connect(self.psscan_analyze)
         self.pstree.clicked.connect(self.pstree_analyze)
+        self.info.clicked.connect(self.info_analyze)
         self.cmdline.clicked.connect(self.cmdline_analyze)
         self.dlllist.clicked.connect(self.dlllist_analyze)
 
@@ -185,7 +186,41 @@ class AnalyzerWindow(QWidget, ui):
 
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
+    def info_analyze(self):
+        self.log_report.setText("Selected info!!")
+        _translate = QCoreApplication.translate
+        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setRowCount(len(info))
 
+        for i in range(len(info)):
+            item = QTableWidgetItem()
+            self.tableWidget.setVerticalHeaderItem(i, item)
+        
+        for i in range(2):
+            item = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(i, item)
+        item = QTableWidgetItem()
+
+        for j in range(len(info)):
+            for i in range(2):
+                self.tableWidget.setItem(j, i, item)
+                item = QTableWidgetItem()
+
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("VAGA", "Variable"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("VAGA", "Value"))
+
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+
+        for j in range(len(info)):
+            for i in range(2):
+                item = self.tableWidget.item(j, i)
+                item.setText(_translate("Dialog", str(info[j][i])))
+
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
+    
     def cmdline_analyze(self):
         self.log_report.setText("Selected cmdline!!")
         _translate = QCoreApplication.translate
@@ -283,6 +318,7 @@ class AnalyzerWindow(QWidget, ui):
         global pslist
         global psscan
         global pstree
+        global info
         global cmdline
         global dlllist
         path = self.file_path.toPlainText()
@@ -297,6 +333,8 @@ class AnalyzerWindow(QWidget, ui):
         psscan = cur.fetchall()
         cur.execute('select * from pstree')
         pstree = cur.fetchall()
+        cur.execute('select * from info')
+        info = cur.fetchall()
         cur.execute('select * from cmdline')
         cmdline = cur.fetchall()
         cur.execute('select * from dlllist')
