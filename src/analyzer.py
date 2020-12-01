@@ -12,13 +12,13 @@ from PyQt5.QtWidgets import *
 from . import plugin
 
 
-ui = uic.loadUiType('src/analyzer.ui')[0]
+ui = uic.loadUiType('res/analyzer.ui')[0]
 
 class AnalyzerWindow(QWidget, ui):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('icon.png'))
+        self.setWindowIcon(QIcon('res/icon.ico'))
 
         #Button Click
         self.select.clicked.connect(self.callfile)
