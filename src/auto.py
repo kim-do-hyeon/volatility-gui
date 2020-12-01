@@ -37,9 +37,9 @@ text = 'Volatility Auto GUI environment. Sourced By PENTAL \
         \n If possible, I would appreciate it if you hit the star button on github.'
 
 
-dir_path = os.getcwd() + '\\data'
+dir_path = os.getcwd() + '\\src\\data'
 shutil.rmtree(dir_path)
-os.mkdir(os.getcwd() + '\\data')
+os.mkdir(os.getcwd() + '\\src\\data')
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -96,7 +96,7 @@ class Ui_Dialog(object):
         path = self.file_path.toPlainText()
         path = pathlib.Path(path)
         print(path)
-        volatility3 = os.getcwd() + "lib/volatility3-1.0.0-beta.1/vol.py"
+        volatility3 = "../lib/volatility3-master/vol.py"
         f = open('plugin_list.txt', 'r', encoding='utf-8')
         plugin_list = f.read().split()
         f.close()

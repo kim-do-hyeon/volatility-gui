@@ -44,7 +44,7 @@ class MyWindow(QMainWindow, ui):
         self.btn_plugin_check.clicked.connect(self.btn_plugin_check_click)
         self.btn_plugin_uncheck.clicked.connect(self.btn_plugin_uncheck_click)
         self.btn_scan.clicked.connect(self.btn_scan_click)
-        # self.btn_auto_analyze.clicked.connect(self.auto_analyze_click)
+        self.btn_auto_analyze.clicked.connect(self.auto_analyze_click)
         self.btn_examine.clicked.connect(self.examine_click)
         self.btn_exit.clicked.connect(self.btn_exit_click)
 
