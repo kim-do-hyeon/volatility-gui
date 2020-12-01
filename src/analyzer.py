@@ -32,6 +32,10 @@ class AnalyzerWindow(QWidget, ui):
 
 
     def pslist_analyze(self):
+        if not 'pslist' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+
         self.log_report.setText("Selected Pslist!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(11)
@@ -84,6 +88,10 @@ class AnalyzerWindow(QWidget, ui):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
     def psscan_analyze(self):
+        if not 'psscan' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         self.log_report.setText("Selected Psscan!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(11)
@@ -136,6 +144,10 @@ class AnalyzerWindow(QWidget, ui):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
     def pstree_analyze(self):
+        if not 'pstree' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         self.log_report.setText("Selected Pstree!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(10)
@@ -187,6 +199,10 @@ class AnalyzerWindow(QWidget, ui):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
     def info_analyze(self):
+        if not 'info' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         self.log_report.setText("Selected info!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(2)
@@ -222,6 +238,10 @@ class AnalyzerWindow(QWidget, ui):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
     
     def cmdline_analyze(self):
+        if not 'cmdline' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         self.log_report.setText("Selected cmdline!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(3)
@@ -259,6 +279,10 @@ class AnalyzerWindow(QWidget, ui):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
     def dlllist_analyze(self):
+        if not 'dlllist' in globals():
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         self.log_report.setText("Selected DLLlist!!")
         _translate = QCoreApplication.translate
         self.tableWidget.setColumnCount(8)
@@ -312,6 +336,10 @@ class AnalyzerWindow(QWidget, ui):
         self.file_path.setText(fname[0])
         path = pathlib.Path(fname[0])
         self.log_report.setText("File Path : {}".format(path))
+        if (path == ''):
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         return path
 
     def scan(self):
@@ -322,6 +350,9 @@ class AnalyzerWindow(QWidget, ui):
         global cmdline
         global dlllist
         path = self.file_path.toPlainText()
+        if (path == ''):
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
         path = pathlib.Path(path)
         file_name = os.path.basename(path)
         self.log_report.setText("File Name : {}".format(file_name))
