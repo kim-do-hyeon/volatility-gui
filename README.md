@@ -23,6 +23,7 @@ Then go directly to the address 'https://github.com/volatilityfoundation/volatil
 Add save log function, Add extensions filtering</del>
 * 2020-09-29 Auto Analyzer with DB Store Function<br>
 * 2020-11-30 Visualize the values in the database by linking the database and GUI
+* 2020-12-01 Clean up the commit history and optimize repo size
 
 # Example Memory
 * <a href = 'https://drive.google.com/open?id=1RjjnR6MEXgJrbvmCRXDxYfKYxXx5W9IC'>Windows XP SP2 (512MB)</a>
