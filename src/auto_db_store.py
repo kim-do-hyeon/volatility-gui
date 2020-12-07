@@ -22,11 +22,11 @@ print(" #     #  ####    #    ####     #     # #    # #    # ######   #   ######
 
 
 def cmdline():
-    path = os.getcwd() + "/data/windows.cmdline.txt"
+    path = os.getcwd() + "/src/data/windows.cmdline.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Args','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -41,11 +41,11 @@ def cmdline():
     conn.close()
 
 # def dlldump():
-#     path = os.getcwd() + "/data/windows.dlldump.txt"
+#     path = os.getcwd() + "/src/data/windows.dlldump.txt"
 #     path = pathlib.Path(path)
 #     f = open(path, 'r', encoding='utf-8')
 #     t = f.read()
-#     t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+#     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
 #     t = t.replace('PID	Process	Result','')
 #     t = t.replace('\n\n',"\t")
 #     t = t.replace('\n',"\t")
@@ -61,11 +61,11 @@ def cmdline():
 #     conn.close()
 
 def dlllist():
-    path = os.getcwd() + "/data/windows.dlllist.txt"
+    path = os.getcwd() + "/src/data/windows.dlllist.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Base	Size	Name	Path	LoadTime	Dumped','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -80,11 +80,11 @@ def dlllist():
     conn.close()
 
 def filescan():
-    path = os.getcwd() + "/data/windows.filescan.txt"
+    path = os.getcwd() + "/src/data/windows.filescan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Name','')
     t = t.replace('\n\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -98,11 +98,11 @@ def filescan():
     conn.close()
 
 def handles():
-    path = os.getcwd() + "/data/windows.handles.txt"
+    path = os.getcwd() + "/src/data/windows.handles.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Offset	HandleValue	Type	GrantedAccess	Name','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n', "\t")
@@ -117,11 +117,11 @@ def handles():
     conn.close()
 
 def info():
-    path = os.getcwd() + "/data/windows.info.txt"
+    path = os.getcwd() + "/src/data/windows.info.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Variable','')
     t = t.replace('Value','')
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -139,11 +139,11 @@ def malfind():
     print("MalFind Update Later")
 
 # def moddump():
-#     path = os.getcwd() + "/data/windows.moddump.txt"
+#     path = os.getcwd() + "/src/data/windows.moddump.txt"
 #     path = pathlib.Path(path)
 #     f = open(path, 'r', encoding='utf-8')
 #     t = f.read()
-#     t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+#     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
 #     t = t.replace('Base	Name	Result','')
 #     t = t.replace('\n\n',"\t")
 #     t = t.replace('\n',"\t")
@@ -158,11 +158,11 @@ def malfind():
 #     conn.close()
 
 def modscan():
-    path = os.getcwd() + "/data/windows.modscan.txt"
+    path = os.getcwd() + "/src/data/windows.modscan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Base	Size	Name	Path	Dumped','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -177,11 +177,11 @@ def modscan():
     conn.close()
 
 def modules():
-    path = os.getcwd() + "/data/windows.modules.txt"
+    path = os.getcwd() + "/src/data/windows.modules.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Base	Size	Name	Path	Dumped','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -196,11 +196,11 @@ def modules():
     conn.close()
 
 def mutantscan():
-    path = os.getcwd() + "/data/windows.mutantscan.txt"
+    path = os.getcwd() + "/src/data/windows.mutantscan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Name','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -215,11 +215,11 @@ def mutantscan():
     conn.close()
 
 def poolscanner():
-    path = os.getcwd() + "/data/windows.poolscanner.txt"
+    path = os.getcwd() + "/src/data/windows.poolscanner.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Tag	Offset	Layer	Name','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -234,11 +234,11 @@ def poolscanner():
     conn.close()
 
 # def procdump():
-#     path = os.getcwd() + "/data/windows.procdump.txt"
+#     path = os.getcwd() + "/src/data/windows.procdump.txt"
 #     path = pathlib.Path(path)
 #     f = open(path, 'r', encoding='utf-8')
 #     t = f.read()
-#     t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+#     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
 #     t = t.replace('PID	Process	Result','')
 #     t = t.replace('\n\n',"\t")
 #     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -252,11 +252,11 @@ def poolscanner():
 #     conn.close()
 
 def pslist():
-    path = os.getcwd() + "/data/windows.pslist.txt"
+    path = os.getcwd() + "/src/data/windows.pslist.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset(V)	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime	Dumped','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -271,11 +271,11 @@ def pslist():
     conn.close()
 
 def psscan():
-    path = os.getcwd() + "/data/windows.psscan.txt"
+    path = os.getcwd() + "/src/data/windows.psscan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime	Dumped','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -290,11 +290,11 @@ def psscan():
     conn.close()
 
 def pstree():
-    path = os.getcwd() + "/data/windows.pstree.txt"
+    path = os.getcwd() + "/src/data/windows.pstree.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset(V)	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -309,11 +309,11 @@ def pstree():
     conn.close()
 
 def registry_hivelist():
-    path = os.getcwd() + "/data/windows.registry.hivelist.txt"
+    path = os.getcwd() + "/src/data/windows.registry.hivelist.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	FileFullPath	Dumped','')
     t = t.replace('\n\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -327,11 +327,11 @@ def registry_hivelist():
     conn.close()
 
 # def registry_hivescan():
-#     path = os.getcwd() + "/data/windows.registry.hivescan.txt"
+#     path = os.getcwd() + "/src/data/windows.registry.hivescan.txt"
 #     path = pathlib.Path(path)
 #     f = open(path, 'r', encoding='utf-8')
 #     t = f.read()
-#     t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+#     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
 #     t = t.replace('Offset','')
 #     t = t.replace('\n\n',"\t")
 #     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -345,11 +345,11 @@ def registry_hivelist():
 #     conn.close()
 
 def registry_certificates():
-    path = os.getcwd() + "/data/windows.registry.certificates.txt"
+    path = os.getcwd() + "/src/data/windows.registry.certificates.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Certificate path	Certificate section	Certificate ID	Certificate name','')
     t = t.replace('\n\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -363,11 +363,11 @@ def registry_certificates():
     conn.close()
 
 def registry_printkey():
-    path = os.getcwd() + "/data/windows.registry.printkey.txt"
+    path = os.getcwd() + "/src/data/windows.registry.printkey.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Last Write Time	Hive Offset	Type	Key	Name	Data	Volatile','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -382,11 +382,11 @@ def registry_printkey():
     conn.close()
 
 def registry_userassist():
-    path = os.getcwd() + "/data/windows.registry.userassist.txt"
+    path = os.getcwd() + "/src/data/windows.registry.userassist.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Hive Offset	Hive Name	Path	Last Write Time	Type	Name	ID	Count	Focus Count	Time Focused	Last Updated	Raw Data','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -401,11 +401,11 @@ def registry_userassist():
     conn.close()
 
 def ssdt():
-    path = os.getcwd() + "/data/windows.ssdt.txt"
+    path = os.getcwd() + "/src/data/windows.ssdt.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Index	Address	Module	Symbol','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -420,11 +420,11 @@ def ssdt():
     conn.close()
 
 def statistics():
-    path = os.getcwd() + "/data/windows.statistics.txt"
+    path = os.getcwd() + "/src/data/windows.statistics.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Valid pages (all)	Valid pages (large)	Swapped Pages (all)	Swapped Pages (large)	Invalid Pages (all)	Invalid Pages (large)	Other Invalid Pages (all)','')
     t = t.replace('\n\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -441,11 +441,11 @@ def statistics():
 #     print("Update Later")
 
 def svcscan():
-    path = os.getcwd() + "/data/windows.svcscan.txt"
+    path = os.getcwd() + "/src/data/windows.svcscan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Order	Pid	Start	State	Type	Name	Display	Binary','')
     t = t.replace('\n\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -459,11 +459,11 @@ def svcscan():
     conn.close()
 
 def symlinkscan():
-    path = os.getcwd() + "/data/windows.symlinkscan.txt"
+    path = os.getcwd() + "/src/data/windows.symlinkscan.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	CreateTime	From Name	To Name','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n',"\t")
@@ -478,11 +478,11 @@ def symlinkscan():
     conn.close()
 
 # def vaddump():
-#     path = os.getcwd() + "/data/windows.vaddump.txt"
+#     path = os.getcwd() + "/src/data/windows.vaddump.txt"
 #     path = pathlib.Path(path)
 #     f = open(path, 'r', encoding='utf-8')
 #     t = f.read()
-#     t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+#     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
 #     t = t.replace('PID	Process	Result','')
 #     t = t.replace('\n\n',"\t")
 #     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
@@ -499,11 +499,11 @@ def symlinkscan():
 #     print("Update Later")
 
 def verinfo():
-    path = os.getcwd() + "/data/windows.verinfo.txt"
+    path = os.getcwd() + "/src/data/windows.verinfo.txt"
     path = pathlib.Path(path)
     f = open(path, 'r', encoding='utf-8')
     t = f.read()
-    t = t.replace('Volatility 3 Framework 1.2.1-beta.1','')
+    t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Base	Name	Major	Minor	Product	Build','')
     t = t.replace('\n\n',"\t")
     t = t.replace('\n', "\t")
