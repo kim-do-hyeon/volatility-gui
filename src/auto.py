@@ -104,6 +104,7 @@ class AutoAnalyzer(QWidget, ui):
             path = pathlib.Path(path)
             db_store_run = 'python ' + str(path)
             os.system(db_store_run)
+            QMessageBox.warning(self, 'Success', 'Success DB Store', QMessageBox.Ok, QMessageBox.Ok)
         except :
             QMessageBox.warning(self, 'Error', 'Does the auto_db_store.py file exist?', QMessageBox.Ok, QMessageBox.Ok)
             return

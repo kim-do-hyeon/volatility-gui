@@ -28,8 +28,7 @@ def cmdline():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Args','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 3:(i + 1) * 3] for i in range((len(my_list) + 2) // 3 )]
@@ -67,8 +66,7 @@ def dlllist():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Base	Size	Name	Path	LoadTime	Dumped','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 8:(i + 1) * 8] for i in range((len(my_list) + 7) // 8 )]
@@ -104,8 +102,7 @@ def handles():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Offset	HandleValue	Type	GrantedAccess	Name','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n', "\t")
+    t = t.replace('\n\n',"\t").replace('\n', "\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 7:(i + 1) * 7] for i in range((len(my_list) + 6) // 7 )] 
@@ -164,8 +161,7 @@ def modscan():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Base	Size	Name	Path	Dumped','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 6:(i + 1) * 6] for i in range((len(my_list) + 5) // 6 )] 
@@ -183,8 +179,7 @@ def modules():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Base	Size	Name	Path	Dumped','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 6:(i + 1) * 6] for i in range((len(my_list) + 5) // 6 )] 
@@ -202,8 +197,7 @@ def mutantscan():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	Name','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 2:(i + 1) * 2] for i in range((len(my_list) + 1) // 2 )] 
@@ -221,8 +215,7 @@ def poolscanner():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Tag	Offset	Layer	Name','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 4:(i + 1) * 4] for i in range((len(my_list) + 3) // 4 )] 
@@ -258,8 +251,7 @@ def pslist():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset(V)	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime	Dumped','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 11:(i + 1) * 11] for i in range((len(my_list) + 10) // 11 )] 
@@ -277,8 +269,7 @@ def psscan():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime	Dumped','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 11:(i + 1) * 11] for i in range((len(my_list) + 10) // 11 )] 
@@ -296,8 +287,7 @@ def pstree():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	PPID	ImageFileName	Offset(V)	Threads	Handles	SessionId	Wow64	CreateTime	ExitTime','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 10:(i + 1) * 10] for i in range((len(my_list) + 9) // 10 )] 
@@ -369,8 +359,7 @@ def registry_printkey():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Last Write Time	Hive Offset	Type	Key	Name	Data	Volatile','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 7:(i + 1) * 7] for i in range((len(my_list) + 6) // 7 )] 
@@ -388,8 +377,7 @@ def registry_userassist():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Hive Offset	Hive Name	Path	Last Write Time	Type	Name	ID	Count	Focus Count	Time Focused	Last Updated	Raw Data','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 12:(i + 1) * 12] for i in range((len(my_list) + 11) // 12 )] 
@@ -407,8 +395,7 @@ def ssdt():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Index	Address	Module	Symbol','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 4:(i + 1) * 4] for i in range((len(my_list) + 3) // 4 )] 
@@ -465,8 +452,7 @@ def symlinkscan():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('Offset	CreateTime	From Name	To Name','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n',"\t")
+    t = t.replace('\n\n',"\t").replace('\n',"\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 4:(i + 1) * 4] for i in range((len(my_list) + 3) // 4 )] 
@@ -505,8 +491,7 @@ def verinfo():
     t = f.read()
     t = t.replace('Volatility 3 Framework 2.0.0-beta.1','')
     t = t.replace('PID	Process	Base	Name	Major	Minor	Product	Build','')
-    t = t.replace('\n\n',"\t")
-    t = t.replace('\n', "\t")
+    t = t.replace('\n\n',"\t").replace('\n', "\t")
     t = "".join([s for s in t.strip().splitlines(True) if s.strip()])
     my_list = t.split('\t')
     result = [my_list[i * 8:(i + 1) * 8] for i in range((len(my_list) + 7) // 8 )]
@@ -520,27 +505,17 @@ def verinfo():
 def virtmap():
     print("Update Later")
 
-cmdline()
-dlllist()
-modscan()
-modules()
-mutantscan()
-poolscanner()
-filescan()
-handles()
-info()
-pslist()
-psscan()
-pstree()
-registry_certificates()
-registry_hivelist()
-registry_printkey()
-registry_userassist()
-ssdt()
-statistics()
-symlinkscan()
+plugin_list = [cmdline(), dlllist(), modscan(), modules(), mutantscan(),
+                poolscanner(), filescan(), handles(), info(),
+                pslist(), psscan(), pstree(),
+                registry_certificates(), registry_hivelist(),
+                registry_printkey(), registry_userassist(),
+                ssdt(), statistics(), symlinkscan(), verinfo()]
+for i in plugin_list :
+    i
+# cmdline()
+# dlllist()
 # vadinfo() -> 구현 못함
-verinfo()
 # malfind() -> DB Store Error
 # moddump()
 # dlldump()
