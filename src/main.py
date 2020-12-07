@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import *
 from . import plugin
 from .util import *
 from .analyzer import AnalyzerWindow
+from .auto import AutoAnalyzer
 
 log_file = open('log.txt', 'w', -1, 'utf-8')
 
@@ -77,7 +78,8 @@ class MainWindow(QMainWindow, ui):
         self.win_analyzer.show()
     
     def auto_analyze_click(self):
-        os.system('python src/auto.py')
+        self.win_auto_analyzer = AutoAnalyzer()
+        self.win_auto_analyzer.show()
         
     def list_plugins_item_click(self) :
         item = self.list_plugins.currentItem()

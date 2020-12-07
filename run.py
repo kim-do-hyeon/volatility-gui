@@ -16,6 +16,7 @@ def main():
 
     create_directory('lib')
     create_directory('case')
+    create_directory('src/data')
 
     import src.main as ui
     ui.main()

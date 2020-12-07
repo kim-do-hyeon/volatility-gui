@@ -146,3 +146,7 @@ case/
 *.raw
 *.db
 log.txt
+
+#Analyzer
+*.txt
+*.crt
