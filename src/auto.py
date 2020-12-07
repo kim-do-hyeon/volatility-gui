@@ -4,10 +4,14 @@ import sys
 import pathlib
 import subprocess
 import sqlite3
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
 import pathlib
 import shutil
+
+from PyQt5 import uic
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from . import plugin
 
 print("                                                                                        ")
 print(" #     #  ####  #        ##   ##### # #      # ##### #   #                              ")
@@ -41,85 +45,69 @@ dir_path = os.getcwd() + '\\src\\data'
 shutil.rmtree(dir_path)
 os.mkdir(os.getcwd() + '\\src\\data')
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(765, 220)
-        Dialog.setMinimumSize(QtCore.QSize(765, 220))
-        Dialog.setMaximumSize(QtCore.QSize(765, 220))
-        self.file_path = QtWidgets.QTextBrowser(Dialog)
-        self.file_path.setGeometry(QtCore.QRect(10, 10, 420, 30))
-        self.file_path.setObjectName("file_path")
-        self.select = QtWidgets.QPushButton(Dialog)
-        self.select.setGeometry(QtCore.QRect(440, 10, 75, 30))
-        self.select.setObjectName("select")
-        self.analyze = QtWidgets.QPushButton(Dialog)
-        self.analyze.setGeometry(QtCore.QRect(520, 10, 75, 30))
-        self.analyze.setObjectName("analyze")
-        self.db = QtWidgets.QPushButton(Dialog)
-        self.db.setGeometry(QtCore.QRect(600, 10, 75, 30))
-        self.db.setObjectName("DB")
-        self.exit = QtWidgets.QPushButton(Dialog)
-        self.exit.setGeometry(QtCore.QRect(680, 10, 75, 30))
-        self.exit.setAcceptDrops(False)
-        self.exit.setObjectName("exit")
-        self.log = QtWidgets.QTextBrowser(Dialog)
-        self.log.setGeometry(QtCore.QRect(10, 50, 745, 160))
-        self.log.setObjectName("LOG")
+ui = uic.loadUiType('res/auto.ui')[0]
 
+class AutoAnalyzer(QWidget, ui):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.setWindowIcon(QIcon('res/icon.ico'))
 
-        self.select.clicked.connect(self.callfile)
-        self.analyze.clicked.connect(self.scan)
-        self.db.clicked.connect(self.db_store)
-        self.exit.clicked.connect(app.quit)
-
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-
-    def retranslateUi(self, Dialog):
-        _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Volatility Auto Analyzer"))
-        self.select.setText(_translate("Dialog", "Select"))
-        self.analyze.setText(_translate("Dialog", "Analyze"))
-        self.db.setText(_translate("Dialog", "DB Store"))
-        self.exit.setText(_translate("Dialog", "EXIT"))
-        self.log.setText(text)
+        #Button Click
+        self.btn_select.clicked.connect(self.callfile)
+        self.btn_analyze.clicked.connect(self.btn_scan_click)
+        self.btn_db_store.clicked.connect(self.btn_db_store_click)
+        self.btn_exit.clicked.connect(self.btn_exit_click)
 
     def callfile(self):
         strFilter = "Raw file (*.raw) ;; Memory file (*.mem) ;; All files (*.*)";
         fname = QFileDialog.getOpenFileName(filter=strFilter)
         self.file_path.setText(fname[0])
         path = pathlib.Path(fname[0])
+        if (path == ''):
+            QMessageBox.warning(self, 'Error', 'Please select an DB.', QMessageBox.Ok, QMessageBox.Ok)
+            return
+            
         return path
 
-    def scan(self):
+    def btn_scan_click(self):
         path = self.file_path.toPlainText()
+        if (path == ''):
+            QMessageBox.warning(self, 'Error', 'Please select an image.', QMessageBox.Ok, QMessageBox.Ok)
+            return
         path = pathlib.Path(path)
-        print(path)
-        volatility3 = "../lib/volatility3-master/vol.py"
-        f = open('plugin_list.txt', 'r', encoding='utf-8')
+        volatility3 = os.getcwd() + "/lib/volatility3-master/vol.py"
+        f = open(os.getcwd() + '/src/plugin_list.txt', 'r', encoding='utf-8')
         plugin_list = f.read().split()
         f.close()
-        for i in plugin_list:
-            print(i)
-            shell = ['python', volatility3,'-f', path, i]
-            fd_open = subprocess.Popen(shell, stdout=subprocess.PIPE).stdout
-            data = fd_open.read().strip().decode('euc-kr')
-            fd_open.close()
-            save_path = os.getcwd() + '\\data\\'
-            f = open(save_path + str(i) + '.txt','wb')
-            f.write(data.encode('utf-8'))
-            f.close()
-        print("Success")
+        try :
+            for i in plugin_list:
+                print(i)
+                shell = ['python', volatility3,'-f', path, i]
+                fd_open = subprocess.Popen(shell, stdout=subprocess.PIPE).stdout
+                data = fd_open.read().strip().decode('euc-kr')
+                fd_open.close()
+                save_path = os.getcwd() + '\\src\\data\\'
+                f = open(save_path + str(i) + '.txt','wb')
+                f.write(data.encode('utf-8'))
+                f.close()
+        except :
+            QMessageBox.warning(self, 'Error', 'Error. Please Retry', QMessageBox.Ok, QMessageBox.Ok)
+            return
+        QMessageBox.information(self, 'Success', 'Success Analyze, Open Examiner and Analyze Memory', QMessageBox.Ok, QMessageBox.Ok)
+        return
         
-    def db_store(self):
-        os.system("python auto_db_store.py")
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+    def btn_db_store_click(self):
+        try :
+            path = os.getcwd() + '\src/auto_db_store.py'
+            path = pathlib.Path(path)
+            db_store_run = 'python ' + str(path)
+            os.system(db_store_run)
+        except :
+            QMessageBox.warning(self, 'Error', 'Does the auto_db_store.py file exist?', QMessageBox.Ok, QMessageBox.Ok)
+            return
+        
+
+    def btn_exit_click(self): 
+        QCoreApplication.quit()
