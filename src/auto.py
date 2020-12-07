@@ -77,9 +77,9 @@ class AutoAnalyzer(QWidget, ui):
             return
         path = pathlib.Path(path)
         volatility3 = os.getcwd() + "/lib/volatility3-master/vol.py"
-        f = open(os.getcwd() + '/src/plugin_list.txt', 'r', encoding='utf-8')
-        plugin_list = f.read().split()
-        f.close()
+        plugin_list = []
+        for plugin_name in plugin.__all__:
+            plugin_list.append(plugin_name)
         try :
             for i in plugin_list:
                 print(i)
