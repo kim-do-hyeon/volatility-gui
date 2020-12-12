@@ -511,8 +511,8 @@ plugin_list = [cmdline(), dlllist(), modscan(), modules(), mutantscan(),
                 registry_certificates(), registry_hivelist(),
                 registry_printkey(), registry_userassist(),
                 ssdt(), statistics(), symlinkscan(), verinfo()]
-for i in plugin_list :
-    i
+for plugin in plugin_list :
+    plugin
 # cmdline()
 # dlllist()
 # vadinfo() -> 구현 못함
