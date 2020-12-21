@@ -23,3 +23,20 @@ __all__ = [
     'windows.vadinfo',
     'windows.verinfo'
 ]
+__linux__ = [
+    'linux.bash',
+    'linux.check_afinfo',
+    'linux.check_creds',
+    'linux.check_idt',
+    'linux.check_modules',
+    'linux.check_syscall',
+    'linux.elfs',
+    'linux.keyboard_notifiers',
+    'linux.lsmod',
+    'linux.lsof',
+    'linux.malfind.Malfind',
+    'linux.proc',
+    'linux.pslist',
+    'linux.pstree',
+    'linux.tty_check'
+]

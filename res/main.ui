@@ -264,7 +264,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_windows">
      <attribute name="title">
@@ -329,6 +329,60 @@
      <attribute name="title">
       <string>Linux</string>
      </attribute>
+     <widget class="QListWidget" name="list_plugins_linux">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>271</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="btn_plugin_uncheck_linux">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>430</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Uncheck All</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="btn_plugin_check_linux">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>430</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Check All</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="btn_auto_analyze">
