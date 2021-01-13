@@ -21,7 +21,7 @@ __all__ = [
     'windows.statistics',
     'windows.symlinkscan',
     'windows.vadinfo',
-    'windows.verinfo'
+    #'windows.verinfo'
 ]
 __linux__ = [
     'linux.bash',
