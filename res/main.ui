@@ -249,6 +249,9 @@
     </property>
    </widget>
    <widget class="QTabWidget" name="tab_plugin">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -264,7 +267,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_windows">
      <attribute name="title">
@@ -326,6 +329,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tab_linux">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Linux</string>
      </attribute>

@@ -33,7 +33,10 @@ default_message = 'Volatility GUI environment. Sourced By PENTAL \
         \n \n \
         Update & issue https://github.com/kim-do-hyeon/Volaltility-gui \
         \n Thanks for your use this program. \
-        \n If possible, I would appreciate it if you hit the star button on github.'
+        \n If possible, I would appreciate it if you hit the star button on github. \
+        \n \
+        \n ###Logs are created only when they are normally shut down (click the Exit button).### \
+        \n Linux Version will update later'
 
 
 class MainWindow(QMainWindow, ui):
@@ -46,8 +49,8 @@ class MainWindow(QMainWindow, ui):
         self.btn_image_open.clicked.connect(self.btn_image_open_click)
         self.btn_plugin_check.clicked.connect(self.btn_plugin_check_click)
         self.btn_plugin_uncheck.clicked.connect(self.btn_plugin_uncheck_click)
-        self.btn_plugin_check_linux.clicked.connect(self.btn_plugin_check_linux_click)
-        self.btn_plugin_uncheck_linux.clicked.connect(self.btn_plugin_uncheck_linux_click)
+        # self.btn_plugin_check_linux.clicked.connect(self.btn_plugin_check_linux_click)
+        # self.btn_plugin_uncheck_linux.clicked.connect(self.btn_plugin_uncheck_linux_click)
         self.btn_scan.clicked.connect(self.btn_scan_click)
         self.btn_auto_analyze.clicked.connect(self.auto_analyze_click)
         self.btn_examine.clicked.connect(self.examine_click)
@@ -69,14 +72,14 @@ class MainWindow(QMainWindow, ui):
                 item.setCheckState(Qt.Checked)
             self.list_plugins.addItem(item)
         
-        for plugin_name in plugin.__linux__:
-            item = QListWidgetItem()
-            item.setText(plugin_name)
-            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
-            item.setCheckState(Qt.Unchecked)
-            if (plugin_name in ['linux.bash']): # for test
-                item.setCheckState(Qt.Checked)
-            self.list_plugins_linux.addItem(item)
+        # for plugin_name in plugin.__linux__:
+        #     item = QListWidgetItem()
+        #     item.setText(plugin_name)
+        #     item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+        #     item.setCheckState(Qt.Unchecked)
+        #     if (plugin_name in ['linux.bash']): # for test
+        #         item.setCheckState(Qt.Checked)
+        #     self.list_plugins_linux.addItem(item)
 
         # Thread
         self.th_scan = ScanThread(self)
@@ -89,7 +92,7 @@ class MainWindow(QMainWindow, ui):
         self.win_analyzer.show()
     
     def auto_analyze_click(self):
-        QMessageBox.information(self, 'Windows Memory', 'Only compatible with Windows Memeory ', QMessageBox.Ok, QMessageBox.Ok)
+        QMessageBox.information(self, 'Windows Memory', 'Only compatible with Windows Memeory \n #There are still many problems. We plan to update continuously.#', QMessageBox.Ok, QMessageBox.Ok)
         self.win_auto_analyzer = AutoAnalyzer()
         self.win_auto_analyzer.show()
         
@@ -118,14 +121,14 @@ class MainWindow(QMainWindow, ui):
         for i in range(self.list_plugins.count()):
             self.list_plugins.item(i).setCheckState(Qt.Unchecked)
 
-    def btn_plugin_check_linux_click(self):
-        for i in range(self.list_plugins_linux.count()):
-            self.list_plugins_linux.item(i).setCheckState(Qt.Checked)
+    # def btn_plugin_check_linux_click(self):
+    #     for i in range(self.list_plugins_linux.count()):
+    #         self.list_plugins_linux.item(i).setCheckState(Qt.Checked)
 
 
-    def btn_plugin_uncheck_linux_click(self):
-        for i in range(self.list_plugins_linux.count()):
-            self.list_plugins_linux.item(i).setCheckState(Qt.Unchecked)
+    # def btn_plugin_uncheck_linux_click(self):
+    #     for i in range(self.list_plugins_linux.count()):
+    #         self.list_plugins_linux.item(i).setCheckState(Qt.Unchecked)
 
     def btn_scan_click(self):
         if not is_volatility_exists():
@@ -165,6 +168,9 @@ class MainWindow(QMainWindow, ui):
         case_path = 'case/' + case_name
         if not os.path.exists(case_path):
             os.makedirs(case_path)
+            log_file = open('log.txt', 'w', -1, 'utf-8')
+            log_file_path = 'case/' + case_name + '/log.txt'
+            print("Log_File_Path : ", log_file_path)
         else:
             reply = QMessageBox.question(self, 'Case Exists', 'The same case name exists.\nWould you like to overwrite it?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if reply == QMessageBox.No:
@@ -204,8 +210,8 @@ class MainWindow(QMainWindow, ui):
         self.btn_image_open.setEnabled(enabled)
         self.btn_plugin_check.setEnabled(enabled)
         self.btn_plugin_uncheck.setEnabled(enabled)
-        self.btn_plugin_check_linux.setEnabled(enabled)
-        self.btn_plugin_uncheck_linux.setEnabled(enabled)
+        # self.btn_plugin_check_linux.setEnabled(enabled)
+        # self.btn_plugin_uncheck_linux.setEnabled(enabled)
         self.btn_scan.setEnabled(enabled)
         self.btn_auto_analyze.setEnabled(enabled)
         self.btn_examine.setEnabled(enabled)
