@@ -28,8 +28,7 @@ default_message = 'Volatility GUI environment. Sourced By PENTAL \
         \n \
         \n 1. Mount the image first.\
         \n 2. After setting the plug-in, press the scan button.\
-        \n 3. Click the ADD DB button to check the result and add the database frame. \
-        \n 4. Click the EXIT button to exit. \
+        \n 3. Click the EXIT button to exit. \
         \n \n \
         Update & issue https://github.com/kim-do-hyeon/Volaltility-gui \
         \n Thanks for your use this program. \
@@ -52,6 +51,7 @@ class MainWindow(QMainWindow, ui):
         # self.btn_plugin_check_linux.clicked.connect(self.btn_plugin_check_linux_click)
         # self.btn_plugin_uncheck_linux.clicked.connect(self.btn_plugin_uncheck_linux_click)
         self.btn_scan.clicked.connect(self.btn_scan_click)
+        self.btn_save.clicked.connect(self.btn_save_click)
         self.btn_auto_analyze.clicked.connect(self.auto_analyze_click)
         self.btn_examine.clicked.connect(self.examine_click)
         self.btn_exit.clicked.connect(self.btn_exit_click)
@@ -236,12 +236,23 @@ class MainWindow(QMainWindow, ui):
         print(timestamp() + " > [SAVE LOG] Save Path " + savefilename[0])
         if savefilename == "":
             return
-            print("ERR")
+            QMessageBox.information(self, 'Error', 'Does not exist file name', QMessageBox.Ok, QMessageBox.Ok)
         f = open(savefilename[0],'wb')
         f.write(txt.encode())
         f.close()
         print(timestamp() + " > [SAVE LOG] Saved!", file = log)
         print(timestamp() + " > [SAVE LOG] Saved!")
+
+    def btn_save_click(self) :
+        txt = self.txt_result.toPlainText()
+        savefilename = QFileDialog.getSaveFileName(self, "Save File", filter="*.txt")
+        if savefilename == "" :
+            return
+            QMessageBox.information(self, 'Error', 'Does not exist file name', QMessageBox.Ok, QMessageBox.Ok)
+        f = open(savefilename[0], 'wb')
+        f.write(txt.encode())
+        f.close()
+        QMessageBox.information(self, 'Success', 'Save log successful', QMessageBox.Ok, QMessageBox.Ok)
 
 
     def btn_exit_click(self):
@@ -285,6 +296,7 @@ class ScanThread(QThread):
             self.evt_result_append.emit('=' * 80 + '\n')
 
             process = subprocess.Popen(shell, stdout=subprocess.PIPE).stdout
+            global result
             result = process.read().strip().decode('euc-kr')
             result = result.replace('\r', '')
             result = result.split('\n', 2)[2]

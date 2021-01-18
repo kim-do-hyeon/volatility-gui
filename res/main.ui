@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="btn_exit">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>470</y>
-      <width>81</width>
-      <height>31</height>
+      <x>1140</x>
+      <y>460</y>
+      <width>111</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -144,9 +144,9 @@
    <widget class="QPushButton" name="btn_scan">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>730</x>
       <y>470</y>
-      <width>161</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -427,6 +427,25 @@
     </property>
     <property name="text">
      <string>Examine</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_save">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>470</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Save Log</string>
     </property>
    </widget>
   </widget>
