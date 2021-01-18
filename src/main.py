@@ -234,9 +234,9 @@ class MainWindow(QMainWindow, ui):
         savefilename = QFileDialog.getSaveFileName(self, "Save File", filter="*.txt")
         print(timestamp() + " > [SAVE LOG] Save Path " + savefilename[0], file = log)
         print(timestamp() + " > [SAVE LOG] Save Path " + savefilename[0])
-        if savefilename == "":
+        if savefilename[0] == "":
+            QMessageBox.information(self, 'Error', 'Does not exist file name!', QMessageBox.Ok, QMessageBox.Ok)
             return
-            QMessageBox.information(self, 'Error', 'Does not exist file name', QMessageBox.Ok, QMessageBox.Ok)
         f = open(savefilename[0],'wb')
         f.write(txt.encode())
         f.close()
@@ -246,13 +246,13 @@ class MainWindow(QMainWindow, ui):
     def btn_save_click(self) :
         txt = self.txt_result.toPlainText()
         savefilename = QFileDialog.getSaveFileName(self, "Save File", filter="*.txt")
-        if savefilename == "" :
+        if savefilename[0] == "" :
+            QMessageBox.information(self, 'Error', 'Does not exist file name!', QMessageBox.Ok, QMessageBox.Ok)
             return
-            QMessageBox.information(self, 'Error', 'Does not exist file name', QMessageBox.Ok, QMessageBox.Ok)
         f = open(savefilename[0], 'wb')
         f.write(txt.encode())
         f.close()
-        QMessageBox.information(self, 'Success', 'Save log successful', QMessageBox.Ok, QMessageBox.Ok)
+        QMessageBox.information(self, 'Success', 'Save log successful!', QMessageBox.Ok, QMessageBox.Ok)
 
 
     def btn_exit_click(self):
